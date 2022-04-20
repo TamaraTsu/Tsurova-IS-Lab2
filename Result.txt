@@ -1,0 +1,72 @@
+{
+    "generation": 1,
+    "best_genes": "xIlHfR",
+    "total_population": 300,
+    "average_fitness": 1.7777777777777781,
+    "max_fitness": 33.33333333333333,
+    "mutation_rate": 3.0
+}
+{
+    "generation": 2,
+    "best_genes": "MQRbIp",
+    "total_population": 300,
+    "average_fitness": 18.499999999999982,
+    "max_fitness": 50.0,
+    "mutation_rate": 3.0
+}
+{
+    "generation": 3,
+    "best_genes": "xIRbIP",
+    "total_population": 300,
+    "average_fitness": 24.055555555555568,
+    "max_fitness": 50.0,
+    "mutation_rate": 3.0
+}
+{
+    "generation": 4,
+    "best_genes": "MyRMIp",
+    "total_population": 300,
+    "average_fitness": 29.555555555555557,
+    "max_fitness": 66.66666666666666,
+    "mutation_rate": 3.0
+}
+{
+    "generation": 5,
+    "best_genes": "MyRMIR",
+    "total_population": 300,
+    "average_fitness": 34.55555555555553,
+    "max_fitness": 83.33333333333334,
+    "mutation_rate": 3.0
+}
+{
+    "generation": 6,
+    "best_genes": "MIzMJR",
+    "total_population": 300,
+    "average_fitness": 39.44444444444441,
+    "max_fitness": 66.66666666666666,
+    "mutation_rate": 3.0
+}
+{
+    "generation": 7,
+    "best_genes": "MyRMIR",
+    "total_population": 300,
+    "average_fitness": 42.88888888888888,
+    "max_fitness": 83.33333333333334,
+    "mutation_rate": 3.0
+}
+{
+    "generation": 8,
+    "best_genes": "MIRMPR",
+    "total_population": 300,
+    "average_fitness": 45.72222222222219,
+    "max_fitness": 83.33333333333334,
+    "mutation_rate": 3.0
+}
+{
+    "generation": 9,
+    "best_genes": "MIRMIR",
+    "total_population": 300,
+    "average_fitness": 49.611111111111086,
+    "max_fitness": 100.0,
+    "mutation_rate": 3.0
+}
