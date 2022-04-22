@@ -3,11 +3,6 @@ from individual import Individual
 
 
 class Population:
-    def Get_Population(self):
-        for individual in self.population:
-            print(
-                f"Genes: {individual.Get_Genes()}, Fitness: {individual.Get_Fitness()}\n")
-
     def Calc_Fitness(self):
         self.population_fitness.clear()
         for individual in self.population:
@@ -108,6 +103,12 @@ class Population:
             self.population = new_generation + list(rand.sample(self.population, self.number_of_population - len(new_generation)))
         else:
             self.population = list(rand.sample(new_generation, self.number_of_population))
+
+    def Get_Population(self):
+        populations = []
+        for individual in self.population:
+            populations.append(individual.Get_Genes())
+        return populations
 
 
     def Get_Best_Individual(self):

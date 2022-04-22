@@ -1,5 +1,6 @@
 import random as rand
 import string
+
 class Individual:
     def Get_Genes(self):
         return self.genes
