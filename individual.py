@@ -1,47 +1,37 @@
 import random as rand
 import string
 
+cyrillic_letters = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+punctutation_marks = " .,?!/"
+
 class Individual:
-    def Get_Genes(self):
+    def get_genes(self):
         return self.genes
 
-    def Get_Fitness(self):
-        return self.fitness
+    def get_fitness(self):
+        return self.fitness_score
 
-    def Fitness(self, target):
+    def fitness(self, target):
         score = 0
         for char_genes, char_target in zip(self.genes, target):
             if (char_genes == char_target):
                 score += 1
-        
-        self.fitness = score / self.length
+        self.fitness_score = score / self.length
 
-    def Crossover(self, partnerA, partnerB, midPoint):
-        mid_point = midPoint
-        genes_a = partnerA.Get_Genes()
-        genes_b = partnerB.Get_Genes()
-        which_child = rand.randint(0,1)
+    def crossover(self, parent_a, parent_b, mid_point):
+        genes_a = parent_a.get_genes()
+        genes_b = parent_b.get_genes()
         self.genes = genes_a[:mid_point] + genes_b[mid_point:]
-        # if which_child == 1:
-        #     self.genes = genes_a[:mid_point] + genes_b[mid_point:]
-        # elif which_child == 2:
-        #     self.genes = genes_b[:mid_point] + genes_a[mid_point:]
 
-    def Mutation(self, mutation_rate):
+    def mutation(self, mutation_rate):
         for item in self.genes:
             if rand.uniform(0.00, 1.00) < mutation_rate:
                 item = self.get_char()
 
     def get_char(self):
-        return rand.choice(string.ascii_letters + ' ' + '.')
+        return rand.choice(cyrillic_letters + string.ascii_letters + punctutation_marks)
 
     def __init__(self, length):
         self.length = length
         self.genes = ''.join(self.get_char() for _ in range(self.length))
-        self.fitness = 0
-
-
-# individual = Individual(6)
-# print(individual.Get_Genes())
-# individual.Fitness("ASdasa")
-# print(individual.Get_Fitness())
+        self.fitness_score = 0

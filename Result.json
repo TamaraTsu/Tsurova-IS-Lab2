@@ -1,26 +1,234 @@
 [
     {
         "generation": 1,
-        "best_genes": "tte",
-        "total_population": 300,
-        "average_fitness": 1.5555555555555554,
-        "max_fitness": 33.33333333333333,
-        "mutation_rate": 1.0
+        "best_genes": "\u041c\u042d!",
+        "total_population": 500,
+        "average_fitness": 0.73,
+        "max_fitness": 33.33,
+        "mutation_rate": 25.0
     },
     {
         "generation": 2,
-        "best_genes": "qMe",
-        "total_population": 300,
-        "average_fitness": 12.666666666666668,
-        "max_fitness": 66.66666666666666,
-        "mutation_rate": 1.0
+        "best_genes": "\u041c\u0435\u0420",
+        "total_population": 500,
+        "average_fitness": 7.53,
+        "max_fitness": 66.67,
+        "mutation_rate": 25.0
     },
     {
         "generation": 3,
-        "best_genes": "qwe",
-        "total_population": 300,
-        "average_fitness": 21.555555555555593,
+        "best_genes": "\u041c\u0418\u0420",
+        "total_population": 500,
+        "average_fitness": 15.87,
         "max_fitness": 100.0,
-        "mutation_rate": 1.0
+        "mutation_rate": 25.0
+    },
+    {
+        "generation": 1,
+        "best_genes": "\u041c\u0418\u041f",
+        "total_population": 500,
+        "average_fitness": 0.87,
+        "max_fitness": 66.67,
+        "mutation_rate": 45.0
+    },
+    {
+        "generation": 2,
+        "best_genes": "\u041c\u0418\u0420",
+        "total_population": 500,
+        "average_fitness": 10.13,
+        "max_fitness": 100.0,
+        "mutation_rate": 45.0
+    },
+    {
+        "generation": 1,
+        "best_genes": "P\u0448\u0420",
+        "total_population": 350,
+        "average_fitness": 0.86,
+        "max_fitness": 33.33,
+        "mutation_rate": 45.0
+    },
+    {
+        "generation": 2,
+        "best_genes": "N\u0418\u0420",
+        "total_population": 350,
+        "average_fitness": 9.05,
+        "max_fitness": 66.67,
+        "mutation_rate": 45.0
+    },
+    {
+        "generation": 3,
+        "best_genes": "\u041c\u0418\u0420",
+        "total_population": 350,
+        "average_fitness": 16.1,
+        "max_fitness": 100.0,
+        "mutation_rate": 45.0
+    },
+    {
+        "generation": 1,
+        "best_genes": "E\u0418e",
+        "total_population": 200,
+        "average_fitness": 0.67,
+        "max_fitness": 33.33,
+        "mutation_rate": 45.0
+    },
+    {
+        "generation": 2,
+        "best_genes": "\u041c\u0418e",
+        "total_population": 200,
+        "average_fitness": 5.0,
+        "max_fitness": 66.67,
+        "mutation_rate": 45.0
+    },
+    {
+        "generation": 3,
+        "best_genes": "\u041c\u0418\u0420",
+        "total_population": 200,
+        "average_fitness": 10.83,
+        "max_fitness": 100.0,
+        "mutation_rate": 45.0
+    },
+    {
+        "generation": 1,
+        "best_genes": "f\u0418\u0442",
+        "total_population": 80,
+        "average_fitness": 0.83,
+        "max_fitness": 33.33,
+        "mutation_rate": 45.0
+    },
+    {
+        "generation": 2,
+        "best_genes": "f\u0418\u0420",
+        "total_population": 80,
+        "average_fitness": 3.33,
+        "max_fitness": 66.67,
+        "mutation_rate": 45.0
+    },
+    {
+        "generation": 3,
+        "best_genes": "f\u0418\u0420",
+        "total_population": 80,
+        "average_fitness": 6.25,
+        "max_fitness": 66.67,
+        "mutation_rate": 45.0
+    },
+    {
+        "generation": 4,
+        "best_genes": "f\u0418\u0420",
+        "total_population": 80,
+        "average_fitness": 8.33,
+        "max_fitness": 66.67,
+        "mutation_rate": 45.0
+    },
+    {
+        "generation": 5,
+        "best_genes": "f\u0418\u0420",
+        "total_population": 80,
+        "average_fitness": 11.25,
+        "max_fitness": 66.67,
+        "mutation_rate": 45.0
+    },
+    {
+        "generation": 6,
+        "best_genes": "f\u0418\u0420",
+        "total_population": 80,
+        "average_fitness": 13.75,
+        "max_fitness": 66.67,
+        "mutation_rate": 45.0
+    },
+    {
+        "generation": 7,
+        "best_genes": "G\u0418\u0420",
+        "total_population": 80,
+        "average_fitness": 16.25,
+        "max_fitness": 66.67,
+        "mutation_rate": 45.0
+    },
+    {
+        "generation": 8,
+        "best_genes": "G\u0418\u0420",
+        "total_population": 80,
+        "average_fitness": 18.33,
+        "max_fitness": 66.67,
+        "mutation_rate": 45.0
+    },
+    {
+        "generation": 9,
+        "best_genes": "f\u0418\u0420",
+        "total_population": 80,
+        "average_fitness": 18.33,
+        "max_fitness": 66.67,
+        "mutation_rate": 45.0
+    },
+    {
+        "generation": 10,
+        "best_genes": "G\u0418\u0420",
+        "total_population": 80,
+        "average_fitness": 20.0,
+        "max_fitness": 66.67,
+        "mutation_rate": 45.0
+    },
+    {
+        "generation": 11,
+        "best_genes": "f\u0418\u0420",
+        "total_population": 80,
+        "average_fitness": 21.67,
+        "max_fitness": 66.67,
+        "mutation_rate": 45.0
+    },
+    {
+        "generation": 12,
+        "best_genes": "f\u0418\u0420",
+        "total_population": 80,
+        "average_fitness": 22.92,
+        "max_fitness": 66.67,
+        "mutation_rate": 45.0
+    },
+    {
+        "generation": 13,
+        "best_genes": "f\u0418\u0420",
+        "total_population": 80,
+        "average_fitness": 24.58,
+        "max_fitness": 66.67,
+        "mutation_rate": 45.0
+    },
+    {
+        "generation": 14,
+        "best_genes": "f\u0418\u0420",
+        "total_population": 80,
+        "average_fitness": 27.08,
+        "max_fitness": 66.67,
+        "mutation_rate": 45.0
+    },
+    {
+        "generation": 15,
+        "best_genes": "f\u0418\u0420",
+        "total_population": 80,
+        "average_fitness": 27.08,
+        "max_fitness": 66.67,
+        "mutation_rate": 45.0
+    },
+    {
+        "generation": 16,
+        "best_genes": "G\u0418\u0420",
+        "total_population": 80,
+        "average_fitness": 25.83,
+        "max_fitness": 66.67,
+        "mutation_rate": 45.0
+    },
+    {
+        "generation": 1,
+        "best_genes": "?\u0418\u0420",
+        "total_population": 100,
+        "average_fitness": 2.67,
+        "max_fitness": 66.67,
+        "mutation_rate": 45.0
+    },
+    {
+        "generation": 2,
+        "best_genes": "\u041c\u0418\u0420",
+        "total_population": 100,
+        "average_fitness": 17.67,
+        "max_fitness": 100.0,
+        "mutation_rate": 45.0
     }
 ]

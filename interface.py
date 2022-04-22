@@ -18,8 +18,12 @@ class App:
         # mutation_rate = float(
         #     input("Please input mutation rate in decimal value: "))
 
-        # Add constraint that we only look up to 1000th generation.
-        max_generation = 1000
+        self.average_fitness_res = []
+        self.max_fitness_res = []
+        self.generation_res = []
+
+        # Add constraint that we only look up to 500th generation.
+        max_generation = 500
 
         # First initialize population
         population = Population(
@@ -27,12 +31,12 @@ class App:
 
         index = 0
 
-        while not population.Reach_Target() and index < max_generation:
+        while not population.reach_target() and index < max_generation:
             # We count the fitness rate for each individual in the population
-            population.Calc_Fitness()
+            population.calc_fitness()
 
             # We get the information of the current generations
-            res = population.Current_Generations()
+            res = population.current_generations()
             self.average_fitness_res.append(res["average_fitness"])
             self.max_fitness_res.append(res["max_fitness"])
             self.generation_res.append(res["generation"])
@@ -50,40 +54,37 @@ class App:
             if index >= 5:
                 if self.result[index]["best_genes"] == self.result[index - 1]["best_genes"] and self.result[index]["best_genes"] == self.result[index - 2]["best_genes"] and self.result[index]["best_genes"] == self.result[index - 3]["best_genes"]:
                     current_best_genes = res["best_genes"]
-                    result_text = f"Sorry but we can only find the best match of target: {current_best_genes}\nIt may be that the number of population is to low thus lower variation in the population,\nor the mutation rate is too low or too high!\n"
+                    result_text = f"Извините, но лучшее совпадение: {current_best_genes}\nВозможно, численность популяции слишком мала, что приводит к снижению разнообразия в популяции,\nили процент мутаций слишком низкий или слишком высокий!\n"
                     print("\n\n" + result_text)
                     sizes = (500,200)
                     image = 'Assets/dino.png'  # Need to add image here for popup window
                     break
 
-            index += 1
-
             # Selection of our population
-            population.Natural_Selection()
+            population.natural_selection()
 
             # Generate the new generation
-            population.Generate_Generation()
+            population.generate_generation()
+
+            index += 1
 
             self.window.update()
 
-        if not population.Reach_Target() and self.result[-1]["generation"] == 1000:
+        if not population.reach_target() and self.result[-1]["generation"] == 500:
             current_best_genes = self.result[-1]["best_genes"]
-            result_text = f"Sorry up till the 1200th generation the best genes that have been produced from {self.number_of_population} genes are: {current_best_genes}\n"
+            result_text = f"Извините, вплоть до 500-го поколения лучшими генами, полуенными из {self.number_of_population} генов являются: {current_best_genes}\n"
             image = 'Assets/deaddino.png'  # Need to add image here for popup window
             print(result_text)
-        elif population.Reach_Target():
+        elif population.reach_target():
             no_generation = self.result[-1]["generation"]
 
-            result_text = f"We have finally obtained individual with genes {self.target} on the {no_generation}th generation!"
+            result_text = f"Мы получили особь с генами {self.target} в {no_generation}м поколении!"
             image = 'Assets/robotdino.png' # Need to add image here for popup window
             print(result_text)
 
         json.dump(self.result, json_file, indent=4)
 
-        # messagebox.showinfo("Result", result_text)
         self.messageWindow(result_text, image,sizes)
-
-        # self.draw_graph()
 
         json_file.close()
 
@@ -99,15 +100,15 @@ class App:
     def show_information(self, best_genes, number_generation, population, average_fitness, max_fitness, mutation_rate):
         self.best_genes_label.configure(text=str(best_genes))
         self.generation_label.configure(
-            text="Generation #" + str(number_generation))
+            text="Поколение №" + str(number_generation))
         self.population_label.configure(
-            text="Total individual in population : " + str(population))
+            text="Число особей в популяции : " + str(population))
         self.average_fitness_label.configure(
-            text="Average fitness : " + str(average_fitness))
+            text="Средняя приспособленность : " + str(average_fitness) + " %")
         self.max_fitness_label.configure(
-            text="Maximum fitness : " + str(max_fitness))
+            text="Наибольшая приспособленность : " + str(max_fitness) + " %")
         self.mutation_rate_label.configure(
-            text="Mutation rate : " + str(mutation_rate))
+            text="Процент мутаций : " + str(mutation_rate)+ " %")
 
     def add_list(self, generated_individuals):
         self.population_listbox.insert(0, generated_individuals)
@@ -136,7 +137,7 @@ class App:
         win.picture.grid(row=0,column=0)
 
         Label(win, text=result_message,font=15).pack()
-        Button(win, text="Ok, show graph!", command=lambda:[win.destroy(), self.draw_graph()],
+        Button(win, text="Ок, покажите граф!", command=lambda:[win.destroy(), self.draw_graph()],
                                activebackground='#345', activeforeground='white',height=2).pack(pady=5)
         
 
@@ -170,34 +171,34 @@ class App:
         self.frame.propagate(0)
 
         # All labels
-        self.label1 = Label(self.frame, text='The Best Genes:', font=20,
+        self.label1 = Label(self.frame, text='Лучшие гены:', font=20,
                             background="#465B75")
         self.label1.pack(side=TOP, anchor="w")
 
-        self.best_genes_label = Label(self.frame, text='To be or not to be', font=20,
+        self.best_genes_label = Label(self.frame, text='Genetic Algorithm MSRT', font=20,
                                       background="#465B75")
         self.best_genes_label.pack(pady=(0, 10), side=TOP, anchor="w")
 
-        self.generation_label = Label(self.frame, text='Generation #0', font=20,
+        self.generation_label = Label(self.frame, text='Поколение №0', font=20,
                                       background="#465B75")
         self.generation_label.pack(side=TOP, anchor="w")
 
-        self.population_label = Label(self.frame, text='Total individual in population n : ' +
+        self.population_label = Label(self.frame, text='Число особей в популяции : ' +
                                       '0', font=20,
                                       background="#465B75")
         self.population_label.pack(side=TOP, anchor="w")
 
-        self.average_fitness_label = Label(self.frame, text='Average fitness : ' +
+        self.average_fitness_label = Label(self.frame, text='Средняя приспособленность : ' +
                                            '0 %', font=20,
                                            background="#465B75")
         self.average_fitness_label.pack(side=TOP, anchor="w")
 
-        self.max_fitness_label = Label(self.frame, text='Max fitness : ' +
+        self.max_fitness_label = Label(self.frame, text='Наибольшая приспособленность : ' +
                                        '0 %', font=20,
                                        background="#465B75")
         self.max_fitness_label.pack(side=TOP, anchor="w")
 
-        self.mutation_rate_label = Label(self.frame, text='Mutation rate : ' +
+        self.mutation_rate_label = Label(self.frame, text='Процент мутации : ' +
                                          '0 %', font=20,
                                          background="#465B75")
         self.mutation_rate_label.pack(side=TOP, anchor="w")
@@ -226,28 +227,28 @@ class App:
         self.frame3.grid_propagate(False)
 
         # Number of population input block
-        self.input_population_label = Label(self.frame3, text='Population:', font=19,
+        self.input_population_label = Label(self.frame3, text='Число популяций:', font=19,
                                             background="#465B75")
         self.input_population_label.grid(column=0, row=0)
         self.input_population = Entry(self.frame3, width=23)
         self.input_population.grid(column=1, row=0)
 
         # Targe input block
-        self.input_target_label = Label(self.frame3, text='Target:', font=19,
+        self.input_target_label = Label(self.frame3, text='Цель:', font=19,
                                         background="#465B75")
         self.input_target_label.grid(column=0, row=1)
         self.input_target = Entry(self.frame3, width=23)
         self.input_target.grid(column=1, row=1)
 
         # Mutation rate input block
-        self.labelpoprate = Label(self.frame3, text='Mutation Rate:', font=19,
+        self.labelpoprate = Label(self.frame3, text='Процент мутации:', font=19,
                                   background="#465B75")
         self.labelpoprate.grid(column=0, row=2)
         self.input_mutation_rate = Entry(self.frame3, width=23)
         self.input_mutation_rate.grid(column=1, row=2)
 
         # Run button
-        self.run_button = Button(self.frame3, text='GO!', height=2, width=10,
+        self.run_button = Button(self.frame3, text='Старт!', height=2, width=10,
                                activebackground='#345', activeforeground='white',
                                command=self.run_algorithm)
         self.run_button.grid(column=3, row=1, padx=(110))

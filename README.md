@@ -13,3 +13,12 @@ Intelligent System laboratory work 2
 Танумихарджа Рафаэл Метью 932001
 
 Цурова Тамара 932001
+
+## Как запустить программу?
+1. Клонируйте репозитории
+2. Откройте папку в любой IDE
+3. Если вы используете VS Code то через терминал/косноль напишите ```pip install -r requirements.txt```
+4. Если нет то можно в консоли или терминале сначала открыть эту папку.Напишите ```cd yourworkingdirectory/thisclonefoldername```, потом напишите ```pip install -r requirements.txt```
+5. Потом вы можете спокойно запускать нашу программу ```python main.py``` в Windows и ```python3 main.py``` в MacOS
+   
+## Результаты
