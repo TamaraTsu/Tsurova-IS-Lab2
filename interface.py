@@ -2,11 +2,13 @@ from tkinter import *
 from tkinter import messagebox
 from population import Population
 from matplotlib import pyplot as plt
+from PIL import Image, ImageTk
 import json
 
 
 class App:
     def genetic_algorithm(self):
+        sizes = (200,200)
         result_text = ""
         image = ""
         json_file = open("Result.json", "w")
@@ -50,7 +52,8 @@ class App:
                     current_best_genes = res["best_genes"]
                     result_text = f"Sorry but we can only find the best match of target: {current_best_genes}\nIt may be that the number of population is to low thus lower variation in the population,\nor the mutation rate is too low or too high!\n"
                     print("\n\n" + result_text)
-                    image = ""  # Need to add image here for popup window
+                    sizes = (500,200)
+                    image = 'Assets/dino.png'  # Need to add image here for popup window
                     break
 
             index += 1
@@ -63,21 +66,22 @@ class App:
 
             self.window.update()
 
-        if not population.Reach_Target() and self.result[-1]["generation"] == 1200:
+        if not population.Reach_Target() and self.result[-1]["generation"] == 1000:
             current_best_genes = self.result[-1]["best_genes"]
             result_text = f"Sorry up till the 1200th generation the best genes that have been produced from {self.number_of_population} genes are: {current_best_genes}\n"
-            image = ""  # Need to add image here for popup window
+            image = 'Assets/deaddino.png'  # Need to add image here for popup window
             print(result_text)
         elif population.Reach_Target():
             no_generation = self.result[-1]["generation"]
+
             result_text = f"We have finally obtained individual with genes {self.target} on the {no_generation}th generation!"
-            image = ""  # Need to add image here for popup window
+            image = 'Assets/robotdino.png' # Need to add image here for popup window
             print(result_text)
 
         json.dump(self.result, json_file, indent=4)
 
         # messagebox.showinfo("Result", result_text)
-        self.messageWindow(result_text, image)
+        self.messageWindow(result_text, image,sizes)
 
         # self.draw_graph()
 
@@ -110,21 +114,33 @@ class App:
         # for individual  in generated_individuals:
         #     self.population_listbox.insert(0, individual)
 
-    def messageWindow(self, result_message, image):
+    def messageWindow(self, result_message, image, sizes):
         win = Toplevel()
+        win.resizable(False,False)
         win.title("Result")
-        # Need to add image here and add icon
-        Label(win, text=result_message).pack()
-        Button(win, text="Ok, show graph!", command=lambda:[win.destroy(), self.draw_graph()]).pack()
+        win.iconbitmap("Assets/geneicon.ico")
+
+        #Open file image
+        win.img = Image.open(image)
+
+        #framing img
+        win.framepop = Frame(win)
+        win.framepop.pack(pady=5)
+        
+        #Resizing image
+        win.resizeimg = win.img.resize(sizes)
+        #Fixed and launch image
+        win.fixedimg = ImageTk.PhotoImage(win.resizeimg)
+
+        win.picture = Label(win.framepop,image = win.fixedimg,borderwidth=0)
+        win.picture.grid(row=0,column=0)
+
+        Label(win, text=result_message,font=15).pack()
+        Button(win, text="Ok, show graph!", command=lambda:[win.destroy(), self.draw_graph()],
+                               activebackground='#345', activeforeground='white',height=2).pack(pady=5)
+        
 
     def draw_graph(self):
-        # average_fitness = []
-        # max_fitness = []
-        # generation = []
-        # for res in self.result:
-        #     generation.append(res["generation"])
-        #     average_fitness.append(res["average_fitness"])
-        #     max_fitness.append(res["max_fitness"])
         plt.figure().set_size_inches(13, 8)
         plt.plot(self.generation_res, self.max_fitness_res, color='#820401', linestyle='-', marker='o', label='Максимальный фитнесс в поколении')
         plt.plot(self.generation_res, self.average_fitness_res, color='#29066B', linestyle='--', marker='o', label='Средний фитнесс в поколении')
@@ -143,7 +159,7 @@ class App:
         self.window.title("Genetic Algorithm")
         self.window.geometry("600x350")
         self.window.resizable(False, False)
-        self.window.iconbitmap("geneicon.ico")
+        self.window.iconbitmap("Assets/geneicon.ico")
 
         ### VIEW ###
 
