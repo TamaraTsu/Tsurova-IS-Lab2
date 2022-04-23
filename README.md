@@ -1,7 +1,5 @@
-# Vidjaya-IS-Lab2
+# Tsurova-IS-Lab2
 Intelligent System laboratory work 2
-
-Виджая Стивен 932001
 
 2022
 ## Вариант: № 7. Сгенерировать с помощью генетического алгоритма слово “МИР”.
